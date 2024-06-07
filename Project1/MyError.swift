@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+//enum MyError: LocalizedError {
+//    case custom
+//    
+//    var errorDescription: String? {
+//        switch self {
+//        case .custom:
+//            return "Your Error Description"
+//        }
+//    }
+//}

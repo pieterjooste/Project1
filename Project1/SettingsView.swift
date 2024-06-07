@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(AppController.self) private var appController
+    @Binding var showSignInView: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("SettingsView")
+            
+            Button("Logout") {
+                do {
+                    try appController.signOut()
+                    showSignInView = true
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
+    
+//    func signOut() throws {
+//        try AuthenticationManager.shared.signOut()
+//    }
 }
 
 #Preview {
-    SettingsView()
+    NavigationStack {
+        SettingsView(showSignInView: .constant(false))
+    }
+    
 }

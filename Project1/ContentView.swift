@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+//    @Environment(AppController.self) private var appController
+   
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+//            switch appController.authState {
+//            case .undefined:
+//                ProgressView()
+//            case .notAuthenticated:
+//                AuthView()
+//            case .authenticated:
+//                ProfileView()
+//            }
         }
-        .padding()
     }
 }
 

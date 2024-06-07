@@ -6,16 +6,50 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct SignInEmailView: View {
+@MainActor
+final class ProfileViewModel: ObservableObject {
     
-    @Environment(AppController.self) private var appController
+    @Published private(set) var user: AuthDataResultModel? = nil
+    
+    func loadCurrentUser() throws {
+        self.user = try AuthenticationManager.shared.getAuthenticatedUser()
+    }
+}
+
+struct ProfileView: View {
+    
+    @StateObject private var viewModel = ProfileViewModel()
+    @Binding var showSignInView: Bool
     
     var body: some View {
-        Text("Sign In Email View")
+        List {
+            if let user = viewModel.user {
+                Text("UserId: \(user.uid)")
+            }
+        }
+        .onAppear {
+            try? viewModel.loadCurrentUser()
+        }
+        .navigationTitle("Profile")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SettingsView(showSignInView: $showSignInView)
+                } label: {
+                    Image(systemName: "gear")
+                        .font(.headline)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    SignInEmailView()
+    NavigationStack {
+        ProfileView(showSignInView: .constant(false))
+    }
 }

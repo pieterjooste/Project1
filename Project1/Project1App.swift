@@ -6,12 +6,32 @@
 //
 
 import SwiftUI
+import Firebase
+import SwiftfulFirebaseAuth
 
 @main
-struct Project1App: App {
+struct Project1 : App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @State private var appController = AppController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environment(appController)
+//                .onAppear {
+//                    appController.listenToAuthChanges()
+//                }
+                .usesErrorAlert()
         }
     }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
 }
