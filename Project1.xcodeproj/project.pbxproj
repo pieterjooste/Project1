@@ -29,6 +29,7 @@
 		C58C43152C1222ED00A51BAD /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58C43142C1222ED00A51BAD /* AuthenticationManager.swift */; };
 		C58D68642C12F70C00EE3337 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D68632C12F70C00EE3337 /* RootView.swift */; };
 		C58D68662C133EEB00EE3337 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D68652C133EEB00EE3337 /* UserManager.swift */; };
+		C58D686B2C1844CA00EE3337 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D686A2C1844CA00EE3337 /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		C58C43142C1222ED00A51BAD /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C58D68632C12F70C00EE3337 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C58D68652C133EEB00EE3337 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		C58D686A2C1844CA00EE3337 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +90,11 @@
 		C58C42E22C0DA31900A51BAD /* Project1 */ = {
 			isa = PBXGroup;
 			children = (
+				C58D686C2C1847DC00EE3337 /* Authentication */,
 				C58D68672C133F4700EE3337 /* FireStore */,
 				C58C43062C0F8FED00A51BAD /* Project1.entitlements */,
 				C58C42E32C0DA31900A51BAD /* Project1App.swift */,
 				C58C42E52C0DA31900A51BAD /* ContentView.swift */,
-				C58C43002C0DC49800A51BAD /* AuthView.swift */,
 				C58C43022C0DC4E100A51BAD /* ProfileView.swift */,
 				C58C43042C0DC58900A51BAD /* AppController.swift */,
 				C58C43072C10430700A51BAD /* Profile.swift */,
@@ -102,7 +104,6 @@
 				C58C430E2C109A8700A51BAD /* ErrorView.swift */,
 				C58C43102C10A2B900A51BAD /* MyError.swift */,
 				C58C43122C11FF7000A51BAD /* SettingsView.swift */,
-				C58C43142C1222ED00A51BAD /* AuthenticationManager.swift */,
 				C58D68632C12F70C00EE3337 /* RootView.swift */,
 			);
 			path = Project1;
@@ -122,6 +123,16 @@
 				C58D68652C133EEB00EE3337 /* UserManager.swift */,
 			);
 			path = FireStore;
+			sourceTree = "<group>";
+		};
+		C58D686C2C1847DC00EE3337 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C58C43002C0DC49800A51BAD /* AuthView.swift */,
+				C58D686A2C1844CA00EE3337 /* AuthenticationViewModel.swift */,
+				C58C43142C1222ED00A51BAD /* AuthenticationManager.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58D686B2C1844CA00EE3337 /* AuthenticationViewModel.swift in Sources */,
 				C58C43112C10A2B900A51BAD /* MyError.swift in Sources */,
 				C58C42E62C0DA31900A51BAD /* ContentView.swift in Sources */,
 				C58C43082C10430700A51BAD /* Profile.swift in Sources */,

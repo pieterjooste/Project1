@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(AppController.self) private var appController
+//    @Environment(AppController.self) private var appController
+    @StateObject var viewModel = AuthenticationViewModel()
     @Binding var showSignInView: Bool
     
     var body: some View {
@@ -17,7 +18,7 @@ struct SettingsView: View {
             
             Button("Logout") {
                 do {
-                    try appController.signOut()
+                    try viewModel.signOut()
                     showSignInView = true
                 } catch {
                     print(error.localizedDescription)

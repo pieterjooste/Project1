@@ -10,20 +10,21 @@ import FirebaseAuth
 
 struct AuthView: View {
     
-    @Environment(AppController.self) private var appController
+//    @Environment(AppController.self) private var appController
     @Environment(\.errorAlert) private var errorAlert
+    @StateObject var viewModel = AuthenticationViewModel()
     @Binding var showSignInView: Bool
     
     @State private var isSignUp = false
     
     var body: some View {
         VStack {
-            TextField("Email...", text: Bindable(appController).email)
+            TextField("Email...", text: $viewModel.email)
                 .padding()
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
             
-            SecureField("Password...", text: Bindable(appController).password)
+            SecureField("Password...", text: $viewModel.password)
                 .padding()
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
@@ -54,11 +55,11 @@ struct AuthView: View {
     func signUp() {
         Task {
             do {
-                try await appController.signUp()
+                try await viewModel.signUp()
                 showSignInView = false
             } catch {
 //                print(error.localizedDescription)
-                await errorAlert.present(error, title: errorAlert.title ?? "Error", buttonTitle: errorAlert.buttonTitle ?? "OK", action: errorAlert.action)
+                errorAlert.present(error, title: errorAlert.title ?? "Error", buttonTitle: errorAlert.buttonTitle ?? "OK", action: errorAlert.action)
             }
         }
     }
@@ -66,11 +67,12 @@ struct AuthView: View {
     func signIn() {
         Task {
             do {
-                try await appController.signIn()
+                try await viewModel.signIn()
                 showSignInView = false
             } catch {
 //                print(error.localizedDescription)
-                await errorAlert.present(error, title: errorAlert.title ?? "Error", buttonTitle: errorAlert.buttonTitle ?? "OK", action: errorAlert.action)
+                errorAlert.present(error, title: errorAlert.title ?? "Error", buttonTitle: errorAlert.buttonTitle ?? "OK", action: errorAlert.action)
+                
             }
         }
     }

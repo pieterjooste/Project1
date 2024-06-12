@@ -9,9 +9,9 @@ import SwiftUI
 import FirebaseAuth
 
 
-enum AuthState {
-    case undefined, authenticated, notAuthenticated
-}
+//enum AuthState {
+//    case undefined, authenticated, notAuthenticated
+//}
 
 @Observable
 class AppController {
@@ -19,35 +19,35 @@ class AppController {
     var email = ""
     var password = ""
     
-    var authState: AuthState = .undefined
+//    var authState: AuthState = .undefined
+//    
+//    func listenToAuthChanges() {
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//            self.authState = user != nil ? .authenticated : .notAuthenticated
+//        }
+//    }
     
-    func listenToAuthChanges() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            self.authState = user != nil ? .authenticated : .notAuthenticated
-        }
-    }
-    
-    func signUp() async throws {
-        guard !email.isEmpty, !password.isEmpty else{
-            print("No email or password found.")
-            return
-        }
-        let authDataResult = try await AuthenticationManager.shared.createUser(email: email, password: password)
+//    func signUp() async throws {
+//        guard !email.isEmpty, !password.isEmpty else{
+//            print("No email or password found.")
+//            return
+//        }
+//        let authDataResult = try await AuthenticationManager.shared.createUser(email: email, password: password)
 //        let user = DBUser(auth: authDataResult)
-        try await UserManager.shared.createNewUser(auth: authDataResult)
-    }
-
-    func signIn() async throws {
-        guard !email.isEmpty, !password.isEmpty else{
-            print("No email or password found.")
-            return
-        }
-        try await AuthenticationManager.shared.signInUser(email: email, password: password)
-    }
-    
-    func signOut() throws {
-        try Auth.auth().signOut()
-    }
+//        try await UserManager.shared.createNewUser(user: user)
+//    }
+//
+//    func signIn() async throws {
+//        guard !email.isEmpty, !password.isEmpty else{
+//            print("No email or password found.")
+//            return
+//        }
+//        try await AuthenticationManager.shared.signInUser(email: email, password: password)
+//    }
+//    
+//    func signOut() throws {
+//        try Auth.auth().signOut()
+//    }
     
     func getUserProfile() {
         let user = Auth.auth().currentUser
@@ -55,7 +55,7 @@ class AppController {
         if let user {
             let uid = user.uid
             let email = user.email
-            let photoURL = user.photoURL
+//            let photoURL = user.photoURL
         }
     }
     
